@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>语法练习 · 起来 / 弄 / 千万 — Bài 15 Ngữ pháp HSK 4-5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f1e8d4;
+    --paper-2: #ece0c6;
+    --ink: #241f1a;
+    --ink-soft: #4a4038;
+    --seal: #a8302a;
+    --seal-dark: #7f231e;
+    --jade: #4b6357;
+    --gold: #b08d33;
+    --rule: #d8c9a3;
+    --card: #f8f2e2;
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at top left, rgba(176,141,51,0.08), transparent 45%),
+      radial-gradient(ellipse at bottom right, rgba(75,99,87,0.06), transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Noto Serif', 'Noto Serif SC', serif;
+    line-height:1.7;
+    min-height:100vh;
+  }
+  /* subtle paper fiber texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(36,31,26,0.015) 0px, transparent 1px, transparent 2px),
+      repeating-linear-gradient(90deg, rgba(36,31,26,0.012) 0px, transparent 1px, transparent 3px);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:28px 20px 90px;}
+
+  /* ---------- Header ---------- */
+  header{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:20px; padding-bottom:22px; margin-bottom:28px;
+    border-bottom:2px solid var(--ink);
+  }
+  .title-block h1{
+    font-family:'Noto Serif SC', serif;
+    font-weight:900;
+    font-size:clamp(28px, 4vw, 42px);
+    margin:0 0 6px;
+    letter-spacing:0.02em;
+  }
+  .title-block h1 .cn{color:var(--seal);}
+  .title-block p{
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .seal-badge{
+    flex-shrink:0;
+    width:76px; height:76px;
+    border:3px solid var(--seal);
+    border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--seal);
+    font-family:'Noto Serif SC', serif;
+    font-weight:900;
+    font-size:26px;
+    transform:rotate(-4deg);
+    position:relative;
+    background:rgba(168,48,42,0.04);
+  }
+  .seal-badge::after{
+    content:"HSK 4-5";
+    position:absolute; bottom:-20px; left:50%; transform:translateX(-50%);
+    font-family:'Inter',sans-serif; font-size:10px; letter-spacing:0.12em;
+    color:var(--ink-soft); white-space:nowrap;
+  }
+
+  /* ---------- Progress seal counter ---------- */
+  .progress-bar{
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:30px; font-family:'Inter',sans-serif; font-size:13px; color:var(--ink-soft);
+  }
+  .progress-track{
+    flex:1; height:6px; background:var(--rule); border-radius:4px; overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; width:0%; background:linear-gradient(90deg, var(--seal), var(--gold));
+    transition:width .5s ease;
+  }
+  #progress-label{white-space:nowrap; font-weight:600;}
+
+  /* ---------- Tabs (book index tabs) ---------- */
+  .layout{display:flex; gap:26px; align-items:flex-start;}
+  nav.tabs{
+    display:flex; flex-direction:column; gap:10px;
+    flex-shrink:0; width:190px; position:sticky; top:20px;
+  }
+  nav.tabs button{
+    font-family:'Noto Serif SC', serif;
+    font-size:16px; font-weight:600;
+    text-align:left;
+    background:var(--paper-2);
+    border:1px solid var(--rule);
+    border-right:6px solid var(--rule);
+    color:var(--ink-soft);
+    padding:12px 14px;
+    cursor:pointer;
+    border-radius:2px 8px 8px 2px;
+    transition:all .2s ease;
+    position:relative;
+  }
+  nav.tabs button .num{
+    display:block; font-family:'Inter',sans-serif; font-size:10px;
+    letter-spacing:0.1em; color:var(--gold); margin-bottom:3px; font-weight:700;
+  }
+  nav.tabs button .vi{
+    display:block; font-family:'Inter',sans-serif; font-size:11px;
+    font-weight:400; color:var(--ink-soft); margin-top:2px;
+  }
+  nav.tabs button:hover{ background:var(--card); border-right-color:var(--gold); }
+  nav.tabs button.active{
+    background:var(--card);
+    color:var(--seal);
+    border-color:var(--seal);
+    border-right:6px solid var(--seal);
+    box-shadow:2px 3px 0 rgba(36,31,26,0.08);
+  }
+  nav.tabs button.active .num{color:var(--seal);}
+
+  main{flex:1; min-width:0;}
+  section.panel{display:none; animation:fadeIn .35s ease;}
+  section.panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  /* ---------- Term header inside panel ---------- */
+  .term-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:6px;
+    flex-wrap:wrap;
+  }
+  .term-head .glyph{
+    font-family:'Noto Serif SC', serif; font-weight:900;
+    font-size:56px; color:var(--ink); line-height:1;
+  }
+  .term-head .tag{
+    font-family:'Inter',sans-serif; font-size:12px; letter-spacing:0.06em;
+    color:#fff; background:var(--jade); padding:4px 10px; border-radius:20px;
+  }
+  .lede{color:var(--ink-soft); font-size:15px; max-width:760px; margin:10px 0 26px;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--seal);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    margin-bottom:20px;
+  }
+  .card h3{
+    margin:0 0 12px; font-family:'Noto Serif SC', serif; font-size:17px;
+    color:var(--seal); display:flex; align-items:center; gap:8px;
+  }
+  .card h3 .vi-sub{font-family:'Inter',sans-serif; font-weight:500; font-size:12px; color:var(--ink-soft); text-transform:none;}
+
+  .zh{font-size:17px;}
+  .vi-note{color:var(--jade); font-style:italic; font-size:14.5px;}
+
+  ol.examples{padding-left:0; list-style:none; margin:0;}
+  ol.examples li{
+    padding:8px 0 8px 34px; position:relative; border-bottom:1px dashed var(--rule);
+  }
+  ol.examples li:last-child{border-bottom:none;}
+  ol.examples li::before{
+    content:counter(ex); counter-increment:ex;
+    position:absolute; left:0; top:8px;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:12px;
+    color:var(--gold); border:1px solid var(--gold); border-radius:50%;
+    width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+  }
+  ol.examples{counter-reset:ex;}
+
+  /* ---------- Practice / exercises ---------- */
+  .exercise{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    margin-bottom:12px;
+    position:relative;
+    overflow:hidden;
+  }
+  .exercise .q{font-size:16px; margin-bottom:4px;}
+  .exercise .hint{
+    font-family:'Inter',sans-serif; font-size:12px; color:var(--gold); font-weight:600;
+  }
+  .exercise .blank{
+    display:inline-block; border-bottom:2px solid var(--ink-soft); min-width:120px;
+  }
+  .reveal-btn{
+    margin-top:10px;
+    font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600;
+    letter-spacing:0.03em;
+    color:var(--seal); background:transparent;
+    border:1px solid var(--seal); border-radius:20px;
+    padding:6px 14px; cursor:pointer; transition:all .2s ease;
+  }
+  .reveal-btn:hover{background:var(--seal); color:#fff;}
+  .reveal-btn.done{opacity:0.55; cursor:default;}
+  .reveal-btn.done:hover{background:transparent; color:var(--seal);}
+  .answer{
+    display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--rule);
+    font-size:15px;
+  }
+  .answer.show{display:block; animation:fadeIn .3s ease;}
+  .answer .ans-zh{color:var(--seal-dark); font-weight:600;}
+  .answer .ans-vi{color:var(--ink-soft); font-size:13.5px; display:block; margin-top:3px;}
+
+  /* seal stamp mark that appears on reveal */
+  .stamp{
+    position:absolute; top:10px; right:14px;
+    width:40px; height:40px;
+    border:2px solid var(--seal);
+    border-radius:6px;
+    color:var(--seal);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Noto Serif SC',serif; font-weight:900; font-size:15px;
+    transform:scale(0) rotate(20deg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .stamp.pop{ animation:stampPop .5s cubic-bezier(.2,1.6,.4,1) forwards; }
+  @keyframes stampPop{
+    0%{ transform:scale(2.2) rotate(20deg); opacity:0; }
+    55%{ transform:scale(0.9) rotate(-6deg); opacity:0.9; }
+    75%{ transform:scale(1.15) rotate(2deg); opacity:1;}
+    100%{ transform:scale(1) rotate(-4deg); opacity:0.92;}
+  }
+
+  /* ---------- Tables ---------- */
+  .table-wrap{overflow-x:auto; margin-bottom:20px;}
+  table{
+    width:100%; border-collapse:collapse; font-size:14.5px;
+    background:var(--card);
+  }
+  table caption{
+    text-align:left; font-family:'Noto Serif SC',serif; color:var(--seal);
+    font-size:15px; margin-bottom:8px; font-weight:600;
+  }
+  th, td{ border:1px solid var(--rule); padding:10px 12px; vertical-align:top; text-align:left; }
+  th{
+    background:var(--ink); color:var(--paper);
+    font-family:'Inter',sans-serif; font-weight:600; font-size:12.5px;
+    letter-spacing:0.03em; text-transform:uppercase;
+  }
+  tr:nth-child(even) td{background:rgba(176,141,51,0.06);}
+  td .vi{color:var(--jade); font-size:13px; display:block; margin-top:2px;}
+
+  /* compare block (giống/khác) */
+  .compare-point{
+    display:flex; gap:14px; margin-bottom:16px; align-items:flex-start;
+    padding-bottom:16px; border-bottom:1px dashed var(--rule);
+  }
+  .compare-point:last-child{border-bottom:none;}
+  .compare-point .idx{
+    flex-shrink:0; width:30px; height:30px; border-radius:50%;
+    background:var(--jade); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:13px;
+  }
+  .compare-point .body p{margin:0 0 6px;}
+  .compare-point .body .zh-ex{color:var(--ink); font-size:14.5px;}
+  .compare-point .body .tone{color:var(--gold); font-size:12.5px; font-family:'Inter',sans-serif;}
+
+  .note-box{
+    background:rgba(168,48,42,0.06); border:1px dashed var(--seal);
+    border-radius:var(--radius); padding:14px 16px; font-size:14px; color:var(--ink-soft);
+    margin-bottom:20px;
+  }
+  .note-box b{color:var(--seal-dark);}
+
+  h2.section-title{
+    font-family:'Noto Serif SC', serif; font-size:22px; color:var(--ink);
+    margin:34px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--rule);
+    display:flex; align-items:center; gap:10px;
+  }
+  h2.section-title::before{content:"印"; color:var(--seal); font-size:18px; opacity:0.7;}
+
+  footer{
+    text-align:center; margin-top:60px; padding-top:20px; border-top:1px solid var(--rule);
+    font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-soft);
+  }
+
+  /* ---------- Overview / summary cards ---------- */
+  .overview-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:24px;
+  }
+  .overview-card{
+    background:var(--card); border:1px solid var(--rule); border-radius:var(--radius);
+    padding:18px 18px; border-top:4px solid var(--seal);
+  }
+  .overview-card h4{
+    margin:0 0 8px; font-family:'Noto Serif SC',serif; font-size:20px; color:var(--ink);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .overview-card h4 small{font-family:'Inter',sans-serif; font-size:11px; color:var(--ink-soft); font-weight:400;}
+  .overview-card ul{margin:0; padding-left:18px; font-size:13.8px;}
+  .overview-card ul li{margin-bottom:6px;}
+  .overview-card .fixed-pattern{
+    display:inline-block; font-family:'Inter',sans-serif; font-size:12px; font-weight:600;
+    background:rgba(75,99,87,0.12); color:var(--jade); padding:2px 8px; border-radius:12px; margin-top:6px;
+  }
+
+  .mini-table{width:100%; border-collapse:collapse; font-size:13px; margin-bottom:24px;}
+  .mini-table th, .mini-table td{border:1px solid var(--rule); padding:7px 9px;}
+  .mini-table th{background:var(--ink); color:var(--paper); font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase;}
+  .mini-table tr:nth-child(even) td{background:rgba(176,141,51,0.06);}
+
+  /* ---------- Quiz ---------- */
+  .quiz-item{
+    background:var(--card); border:1px solid var(--rule); border-radius:var(--radius);
+    padding:16px 18px; margin-bottom:14px;
+  }
+  .quiz-item .q-num{
+    font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:var(--gold);
+    letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;
+  }
+  .quiz-item .q-text{font-size:16px; margin:0 0 12px;}
+  .options{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  @media (max-width:560px){ .options{grid-template-columns:1fr;} }
+  .opt-btn{
+    text-align:left; font-family:'Noto Serif',serif; font-size:14.5px;
+    background:var(--paper); border:1px solid var(--rule); border-radius:6px;
+    padding:9px 12px; cursor:pointer; transition:all .15s ease; color:var(--ink);
+  }
+  .opt-btn:hover{border-color:var(--gold); background:var(--paper-2);}
+  .opt-btn.correct{background:rgba(75,99,87,0.18); border-color:var(--jade); color:var(--jade); font-weight:600;}
+  .opt-btn.wrong{background:rgba(168,48,42,0.14); border-color:var(--seal); color:var(--seal-dark); font-weight:600;}
+  .opt-btn.disabled{pointer-events:none; opacity:0.75;}
+  .quiz-explain{
+    display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--rule);
+    font-size:13.8px; color:var(--ink-soft);
+  }
+  .quiz-explain.show{display:block; animation:fadeIn .3s ease;}
+
+  .quiz-summary{
+    background:var(--card); border:2px solid var(--seal); border-radius:var(--radius);
+    padding:24px; text-align:center; margin-top:10px;
+  }
+  .quiz-summary .score-num{
+    font-family:'Noto Serif SC',serif; font-weight:900; font-size:48px; color:var(--seal);
+    margin:0;
+  }
+  .quiz-summary .grade{
+    font-family:'Noto Serif SC',serif; font-size:22px; color:var(--jade); margin:6px 0 12px;
+  }
+  .quiz-summary .msg{font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink-soft); margin-bottom:16px;}
+  .retry-btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:13px;
+    background:var(--seal); color:#fff; border:none; border-radius:20px;
+    padding:9px 22px; cursor:pointer;
+  }
+  .retry-btn:hover{background:var(--seal-dark);}
+  #quiz-progress-wrap{
+    font-family:'Inter',sans-serif; font-size:12.5px; color:var(--ink-soft);
+    margin-bottom:16px; display:flex; align-items:center; gap:10px;
+  }
+  #quiz-progress-wrap .track{flex:1; height:6px; background:var(--rule); border-radius:4px; overflow:hidden;}
+  #quiz-progress-wrap .fill{height:100%; width:0%; background:linear-gradient(90deg, var(--jade), var(--gold)); transition:width .4s ease;}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 860px){
+    .layout{flex-direction:column;}
+    nav.tabs{
+      flex-direction:row; width:100%; overflow-x:auto; position:static;
+      gap:8px; padding-bottom:6px;
+    }
+    nav.tabs button{flex-shrink:0; border-right:1px solid var(--rule); border-bottom:4px solid var(--rule);}
+    nav.tabs button.active{border-right-color:var(--seal); border-bottom:4px solid var(--seal);}
+    header{flex-direction:column;}
+    .term-head .glyph{font-size:42px;}
+    .overview-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="title-block">
+      <h1><span class="cn">語法</span> Ngữ pháp Bài 15</h1>
+      <p>想起来 · 弄 · 千万 — HSK 4–5 · Tài liệu tương tác song ngữ</p>
+    </div>
+    <div class="seal-badge">練</div>
+  </header>
+
+  <div class="progress-bar">
+    <span id="progress-label">已完成 0 / <span id="progress-total">0</span></span>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <div class="layout">
+    <nav class="tabs">
+      <button class="tab-btn active" data-panel="p1"><span class="num">一 · 01</span>想起来<span class="vi">Nhớ lại</span></button>
+      <button class="tab-btn" data-panel="p2"><span class="num">二 · 02</span>弄<span class="vi">Động từ vạn năng</span></button>
+      <button class="tab-btn" data-panel="p3"><span class="num">三 · 03</span>千万<span class="vi">So với 一定</span></button>
+      <button class="tab-btn" data-panel="p4"><span class="num">四 · 04</span>补语大比拼<span class="vi">Mở rộng bổ ngữ</span></button>
+      <button class="tab-btn" data-panel="p5"><span class="num">五 · 05</span>总结测验<span class="vi">Tổng kết & Kiểm tra</span></button>
+    </nav>
+
+    <main>
+
+      <!-- ================= PANEL 1: 想起来 ================= -->
+      <section class="panel active" id="p1">
+        <div class="term-head">
+          <span class="glyph">起来</span>
+          <span class="tag">动词 · Bổ ngữ xu hướng / khả năng</span>
+        </div>
+        <p class="lede">"起来" dùng sau động từ làm bổ ngữ chỉ hướng hoặc bổ ngữ khả năng, biểu thị hướng của động tác từ dưới lên trên. Khi dùng sau "想", nghĩa mở rộng thành <b>nhớ lại</b> một người hay một việc trong quá khứ.</p>
+
+        <div class="card">
+          <h3>释义与例句 <span class="vi-sub">Giải nghĩa & ví dụ</span></h3>
+          <p class="zh">"起来"，动词，可用在动词后面做趋向补语或可能补语，表示动作的方向从下到上。</p>
+          <p class="vi-note">"起来" là động từ, có thể dùng sau động từ khác làm bổ ngữ chỉ hướng hoặc bổ ngữ khả năng, biểu thị hướng của động tác là từ dưới lên trên.</p>
+          <ol class="examples">
+            <li class="zh">你这样躺着看书对眼睛不好，快坐起来！</li>
+            <li class="zh">需要长时间坐着工作的人，一小时左右一定要站起来活动活动。</li>
+          </ol>
+          <p class="zh" style="margin-top:14px;">"起来"如果用在动词"想"后，引申表示从记忆中寻找出以前的人或事。</p>
+          <p class="vi-note">Nếu "起来" dùng sau động từ "想", nghĩa mở rộng là nhớ lại một người hoặc một việc trong quá khứ.</p>
+          <ol class="examples">
+            <li class="zh">我突然想起来得去银行，所以不能陪你去大使馆了。</li>
+            <li class="zh">我想起来了，这孩子又聪明又可爱，你们教育得真好！</li>
+          </ol>
+        </div>
+
+        <h2 class="section-title">练一练 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">Hoàn thành câu</span></h2>
+
+        <div class="exercise" data-id="e1-1">
+          <p class="q zh">(1) 当那个男孩走过来邀请她跳舞时，<span class="blank">&nbsp;</span>。 <span class="hint">（起来）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">她马上站起来，跟他一起跳舞去了。</span>
+            <span class="ans-vi">Cô ấy liền đứng dậy, cùng anh ấy đi khiêu vũ.</span>
+          </div>
+        </div>
+
+        <div class="exercise" data-id="e1-2">
+          <p class="q zh">(2) 你看见我钱包放哪儿了吗？<span class="blank">&nbsp;</span>。 <span class="hint">（想起来）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">我想起来了，你的钱包放在书包里了。</span>
+            <span class="ans-vi">Tôi nhớ ra rồi, ví của bạn để trong cặp sách rồi.</span>
+          </div>
+        </div>
+
+        <div class="exercise" data-id="e1-3">
+          <p class="q zh">(3) 每个人都对小时候有美好的回忆，<span class="blank">&nbsp;</span>。 <span class="hint">（想起来）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">一想起来，脸上就会不自觉地露出微笑。</span>
+            <span class="ans-vi">Vừa nhớ lại là trên mặt liền tự nhiên nở nụ cười.</span>
+          </div>
+        </div>
+
+        <div class="note-box"><b>提醒 Lưu ý:</b> "想起来" ≠ "想不起来". Thể phủ định "想不起来" mang nghĩa <i>không thể nhớ ra</i>, dùng khi cố nhớ mà không được — đây là bổ ngữ khả năng (可能补语), khác với "想起来" là bổ ngữ kết quả đã hoàn thành.</div>
+      </section>
+
+      <!-- ================= PANEL 2: 弄 ================= -->
+      <section class="panel" id="p2">
+        <div class="term-head">
+          <span class="glyph">弄</span>
+          <span class="tag">动词 · Động từ vạn năng (khẩu ngữ)</span>
+        </div>
+        <p class="lede">"弄" mang nghĩa "làm", có thể thay thế cho nhiều động từ cụ thể khác — người nghe dựa vào ngữ cảnh để hiểu chính xác "弄" đang thay cho động từ nào. Rất thường dùng trong khẩu ngữ.</p>
+
+        <div class="card">
+          <h3>释义与例句 <span class="vi-sub">Giải nghĩa & ví dụ</span></h3>
+          <p class="zh">"弄"，动词，表示"做"的意思，可以代表其他一些动词的意义，常用在口语中。</p>
+          <p class="vi-note">"弄" là động từ, mang nghĩa "làm", có thể thay thế cho nghĩa của một số động từ khác, thường dùng trong văn nói.</p>
+          <ol class="examples">
+            <li class="zh">A：关于那个新闻的材料你准备好了吗？我们开会时要用。<br>B：都弄（准备）好了，马上给您送过去。</li>
+            <li class="zh">A：一会儿搬沙发的时候要小心点儿，别弄（碰）坏了。<br>B：没问题，我会注意看着脚下的。</li>
+            <li class="zh">每天因为这些小事批评她，弄（批评）得我俩心情都不好。</li>
+          </ol>
+        </div>
+
+        <h2 class="section-title">练一练 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">Hoàn thành câu</span></h2>
+
+        <div class="exercise" data-id="e2-1">
+          <p class="q zh">(1) 老师提醒我们考试时要仔细，<span class="blank">&nbsp;</span>。 <span class="hint">（弄）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">别把答案写错了，也别把答题卡弄脏了。</span>
+            <span class="ans-vi">Đừng viết sai đáp án, cũng đừng làm bẩn phiếu trả lời.</span>
+          </div>
+        </div>
+
+        <div class="exercise" data-id="e2-2">
+          <p class="q zh">(2) 住在这里，外面不管什么时候都很热闹，晚上即使关上了窗户声音也很大，<span class="blank">&nbsp;</span>。 <span class="hint">（弄）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">弄得我每天晚上都睡不好觉。</span>
+            <span class="ans-vi">Khiến tôi tối nào cũng ngủ không ngon.</span>
+          </div>
+        </div>
+
+        <div class="exercise" data-id="e2-3">
+          <p class="q zh">(3) <span class="blank">&nbsp;</span>，去西边的公共汽车应该在对面坐。 <span class="hint">（弄）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">我刚才弄（搞）错了方向。</span>
+            <span class="ans-vi">Vừa nãy tôi nhầm hướng rồi.</span>
+          </div>
+        </div>
+
+        <h2 class="section-title">扩展：弄 / 搞 / 干 / 做 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">Các động từ đa năng tương tự</span></h2>
+        <div class="table-wrap">
+        <table>
+          <caption>Bảng so sánh 做 / 弄 / 搞 / 干</caption>
+          <thead><tr><th>做 (zuò)</th><th>弄 (nòng)</th><th>搞 (gǎo)</th><th>干 (gàn)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Làm, thực hiện — nghĩa chuẩn, rõ ràng<span class="vi">Dùng cả văn viết & văn nói</span></td>
+              <td>Làm — khẩu ngữ, thay cho động từ cụ thể<span class="vi">准备/碰/批评…</span></td>
+              <td>Làm, tổ chức, gây ra — khẩu ngữ<span class="vi">Mạnh hơn 弄 khi nói hậu quả xấu</span></td>
+              <td>Làm — khẩu ngữ, mạnh, suồng sã<span class="vi">⚠ Tránh dùng với đối tượng là người</span></td>
+            </tr>
+            <tr>
+              <td>做作业、做饭、做事、做人</td>
+              <td>弄坏、弄脏、弄丢、弄乱、弄好</td>
+              <td>搞活动、搞对象、搞砸、搞清楚</td>
+              <td>干活、干什么、干杯</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="table-wrap">
+        <table>
+          <caption>三句原文对照 · 替换成 做 / 搞 / 干</caption>
+          <thead><tr><th>原句 (弄)</th><th>换成 做</th><th>换成 搞</th></tr></thead>
+          <tbody>
+            <tr><td>都弄（准备）好了，马上给您送过去。</td><td>都做好了，马上给您送过去。</td><td>都搞好了，马上给您送过去。</td></tr>
+            <tr><td>别弄（碰）坏了。</td><td class="vi" style="color:#a8302a;">✕ 做坏 không tự nhiên</td><td>别搞坏了。</td></tr>
+            <tr><td>弄（批评）得我俩心情都不好。</td><td class="vi" style="color:#a8302a;">✕ không tự nhiên</td><td>搞得我俩心情都不好。</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note-box"><b>Ghi nhớ:</b> 做 chỉ thay được cho 弄 khi 弄 mang nghĩa "làm/chuẩn bị" (弄好 = 做好). Khi 弄 mang nghĩa "làm hỏng / va vào / khiến ra sao" thì <b>không thể dùng 做</b>, chỉ 弄/搞 mới thay được.</div>
+
+        <h2 class="section-title">练一练（弄 / 搞 / 干 / 做） <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">10 câu luyện tập phân biệt</span></h2>
+
+        <div class="exercise" data-id="e2-4">
+          <p class="q zh">(1) 妈妈每天下班回家还要 <span class="blank">&nbsp;</span> 饭、<span class="blank">&nbsp;</span> 家务，非常辛苦。 <span class="hint">（做）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">做（饭）、做（家务）</span><span class="ans-vi">"做" trung tính, chuẩn mực — dùng cho việc cụ thể, quen thuộc như nấu ăn, việc nhà.</span></div>
+        </div>
+        <div class="exercise" data-id="e2-5">
+          <p class="q zh">(2) 弟弟不小心把我新买的衣服 <span class="blank">&nbsp;</span> 脏了，我有点生气，不过也没办法。 <span class="hint">（弄）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">弄（脏）</span><span class="ans-vi">"弄" thay cho hành động cụ thể khiến đồ vật ra sao (ở đây là làm bẩn).</span></div>
+        </div>
+        <div class="exercise" data-id="e2-6">
+          <p class="q zh">(3) 这次活动是几个大学生自己 <span class="blank">&nbsp;</span> 起来的，没想到来了那么多人。 <span class="hint">（搞）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">搞（起来）</span><span class="ans-vi">"搞" hay đi với việc có tổ chức, quy mô (搞活动).</span></div>
+        </div>
+        <div class="exercise" data-id="e2-7">
+          <p class="q zh">(4) 你每天下班以后一般都 <span class="blank">&nbsp;</span> 什么？——大部分时间在家看书、休息。 <span class="hint">（干）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">干（什么）</span><span class="ans-vi">"干什么" là cách hỏi khẩu ngữ rất quen thuộc — không mang nghĩa tục khi đi với "什么".</span></div>
+        </div>
+        <div class="exercise" data-id="e2-8">
+          <p class="q zh">(5) 这份报告的数据有点乱，你能不能帮我重新 <span class="blank">&nbsp;</span> 清楚？ <span class="hint">（搞）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">搞（清楚）</span><span class="ans-vi">"搞清楚" = làm rõ, hiểu rõ — cụm cố định rất thông dụng.</span></div>
+        </div>
+        <div class="exercise" data-id="e2-9">
+          <p class="q zh">(6) 这件事情从头到尾都是他自己 <span class="blank">&nbsp;</span> 的决定，跟别人没关系。 <span class="hint">（做）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">做（的决定）</span><span class="ans-vi">"做决定" là cụm cố định, trang trọng — không thay bằng 弄/搞/干.</span></div>
+        </div>
+        <div class="exercise" data-id="e2-10">
+          <p class="q zh">(7) 我不小心把钥匙 <span class="blank">&nbsp;</span> 丢了，只好又去配了一把新的。 <span class="hint">（弄）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">弄（丢）</span><span class="ans-vi">"弄丢" = làm mất — 弄 thay cho hành động cụ thể dẫn đến kết quả xấu nhẹ.</span></div>
+        </div>
+        <div class="exercise" data-id="e2-11">
+          <p class="q zh">(8) 这么重要的谈判，你怎么可以 <span class="blank">&nbsp;</span> 砸呢？公司损失了不少钱。 <span class="hint">（搞）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">搞（砸）</span><span class="ans-vi">"搞砸" = làm hỏng bét — hậu quả nghiêm trọng hơn "弄坏", thường dùng cho việc lớn.</span></div>
+        </div>
+        <div class="exercise" data-id="e2-12">
+          <p class="q zh">(9) 听说他们俩正在 <span class="blank">&nbsp;</span> 对象，感情好像很不错。 <span class="hint">（搞）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">搞（对象）</span><span class="ans-vi">"搞对象" = tán bạn trai/bạn gái — cách nói khẩu ngữ, thân mật.</span></div>
+        </div>
+        <div class="exercise" data-id="e2-13">
+          <p class="q zh">(10) 大家一起干杯吧，为我们的友谊 <span class="blank">&nbsp;</span> 杯！ <span class="hint">（干）</span></p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">干（杯）</span><span class="ans-vi">"干杯" = cạn ly — cụm cố định, không thể thay bằng 弄/搞/做.</span></div>
+        </div>
+      </section>
+
+      <!-- ================= PANEL 3: 千万 ================= -->
+      <section class="panel" id="p3">
+        <div class="term-head">
+          <span class="glyph">千万</span>
+          <span class="tag">副词 · Phải, nhất định (khẩn thiết)</span>
+        </div>
+        <p class="lede">"千万" biểu thị "务必、一定" (nhất định phải), thường đi kèm hình thức phủ định — mang ngữ điệu tha thiết, dặn dò.</p>
+
+        <div class="card">
+          <h3>释义与例句 <span class="vi-sub">Giải nghĩa & ví dụ</span></h3>
+          <p class="zh">"千万"，副词，表示"务必、一定"的意思，后面常接否定形式。</p>
+          <p class="vi-note">"千万" là phó từ, mang nghĩa "nhất định phải" (khẩn thiết), thường đi kèm hình thức phủ định.</p>
+          <ol class="examples">
+            <li class="zh">不过表扬也是一门艺术，表扬千万不要太多，过多的表扬可能会给孩子带来压力。</li>
+            <li class="zh">我要等她生日那天再送给她这个礼物，你现在千万别告诉她。</li>
+            <li class="zh">每个人都应该记住这句话："开车千万别喝酒，喝酒千万别开车。"</li>
+          </ol>
+        </div>
+
+        <h2 class="section-title">练一练</h2>
+        <div class="exercise" data-id="e3-1">
+          <p class="q zh">(1) 有些事情坚持了才会看到希望，<span class="blank">&nbsp;</span>。 <span class="hint">（千万）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">千万不要因为一时的困难就放弃了。</span>
+            <span class="ans-vi">Nhất định đừng vì khó khăn nhất thời mà bỏ cuộc.</span>
+          </div>
+        </div>
+        <div class="exercise" data-id="e3-2">
+          <p class="q zh">(2) 要是事情没有发生过，<span class="blank">&nbsp;</span>。 <span class="hint">（千万）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">你千万别到处跟别人说，免得引起误会。</span>
+            <span class="ans-vi">Bạn nhất định đừng đi kể lung tung, kẻo gây hiểu lầm.</span>
+          </div>
+        </div>
+        <div class="exercise" data-id="e3-3">
+          <p class="q zh">(3) 这个箱子里都是杯子和盘子，<span class="blank">&nbsp;</span>。 <span class="hint">（千万）</span></p>
+          <button class="reveal-btn">Xem đáp án gợi ý</button>
+          <div class="answer">
+            <span class="ans-zh">搬的时候千万要小心，别打碎了。</span>
+            <span class="ans-vi">Lúc di chuyển nhất định phải cẩn thận, đừng làm vỡ.</span>
+          </div>
+        </div>
+
+        <h2 class="section-title">比一比：千万 —— 一定</h2>
+        <div class="card">
+          <h3>相同点 <span class="vi-sub">Điểm giống nhau</span></h3>
+          <p class="zh">两者都是副词，表示"提出要求，嘱咐"的意思。</p>
+          <p class="vi-note">Cả hai đều là phó từ, mang nghĩa "đưa ra yêu cầu, nhắc nhở, dặn dò".</p>
+          <p class="zh">例：通过失败你能获得别人没有的经验，千万/一定不要因为失败就不努力了。</p>
+        </div>
+
+        <div class="card">
+          <h3>不同点 <span class="vi-sub">Điểm khác nhau</span></h3>
+
+          <div class="compare-point">
+            <div class="idx">1</div>
+            <div class="body">
+              <p class="tone">CÂU KHẲNG ĐỊNH / PHỦ ĐỊNH</p>
+              <p>"千万" thường dùng trong câu <b>phủ định</b>, đi cùng "别 / 要-不要 / 不能"; "一定" thường dùng trong câu <b>khẳng định</b>, đi cùng "要-不要 / 能-不能".</p>
+              <p class="zh-ex">工作只是生活的一部分，出去工作是为了让生活变得更好，因此，<b>千万</b>不要把工作中的不愉快带到生活中来。</p>
+              <p class="zh-ex">找工作的人<b>一定</b>要到这里看一看，这里提供的工作机会是最多的。</p>
+            </div>
+          </div>
+
+          <div class="compare-point">
+            <div class="idx">2</div>
+            <div class="body">
+              <p class="tone">NGỮ ĐIỆU</p>
+              <p>"千万" ngữ điệu <b>uyển chuyển, tha thiết</b> — mong người khác làm gì; "一定" ngữ điệu <b>mạnh, mang tính ra lệnh</b> — yêu cầu kiên quyết phải làm được.</p>
+              <p class="zh-ex">当机会到来时，<b>千万</b>不要放手，有什么想做的事就马上去做吧。 <i>(hy vọng, tha thiết nhắc nhở)</i></p>
+              <p class="zh-ex">这几个动作你做得还是不太标准，在正式比赛前<b>一定</b>要练好。 <i>(ra lệnh, kiên quyết)</i></p>
+            </div>
+          </div>
+
+          <div class="compare-point">
+            <div class="idx">3</div>
+            <div class="body">
+              <p class="tone">NGÔI THỨ NHẤT — QUYẾT TÂM</p>
+              <p>"一定" dùng trong câu ngôi thứ nhất, đi cùng "会/不会、能", biểu thị quyết tâm của người nói. "千万" không có cách dùng này.</p>
+              <p class="zh-ex">感谢您的支持和鼓励，我<b>一定</b>会继续努力。</p>
+            </div>
+          </div>
+
+          <div class="compare-point">
+            <div class="idx">4</div>
+            <div class="body">
+              <p class="tone">"CHẮC CHẮN, TẤT NHIÊN" / "KHÔNG HẲN"</p>
+              <p>"一定" còn mang nghĩa "chắc chắn, tất nhiên". Thể phủ định "不一定" = tình huống chưa thể khẳng định, nghiêng về nghĩa "không cần, có thể không". "千万" không có cách dùng này.</p>
+              <p class="zh-ex">只要你不放弃希望，不怕辛苦，能够一直坚持努力学习，提高自己的水平和能力，就<b>一定</b>能成功。</p>
+              <p class="zh-ex">人们常说："便宜没好货，好货不便宜。"其实<b>不一定</b>都是这样，有时候质量很好的东西也会很便宜。</p>
+            </div>
+          </div>
+
+          <div class="compare-point">
+            <div class="idx">5</div>
+            <div class="body">
+              <p class="tone">LÀM TÍNH TỪ</p>
+              <p>"一定" còn làm tính từ, mang nghĩa "một mức độ nào đó, thích hợp". "千万" không có cách dùng này.</p>
+              <p class="zh-ex">如果你有<b>一定</b>的语言基础和经济条件，那么出国学习外语是最好的选择。</p>
+            </div>
+          </div>
+
+          <div class="compare-point">
+            <div class="idx">6</div>
+            <div class="body">
+              <p class="tone">ĐÁP LẠI NGẮN GỌN</p>
+              <p>Khi trả lời người khác, "一定" có thể dùng ở dạng ngắn gọn hoặc đứng độc lập một mình. "千万" không có cách dùng này.</p>
+              <p class="zh-ex">A：王老师您刚来这儿工作三年就当了教授，这次你得请客啊。<br>B：<b>一定</b>（请客）。</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title">练一练：千万 vs 一定 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">10 câu — bám sát 6 điểm 不同点 ở trên</span></h2>
+
+        <div class="exercise" data-id="e3c-1">
+          <p class="q zh">(1) 出门前，妈妈叮嘱我："<span class="blank">&nbsp;</span>别忘了带伞，今天会下雨。"</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">千万</span><span class="ans-vi">Câu phủ định + ngữ điệu tha thiết dặn dò → dùng "千万" (điểm 1 & 2).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-2">
+          <p class="q zh">(2) 这次比赛非常重要，教练要求我们<span class="blank">&nbsp;</span>要发挥出最好水平。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">一定</span><span class="ans-vi">Câu khẳng định, ngữ điệu ra lệnh mạnh, yêu cầu kiên quyết → dùng "一定" (điểm 1 & 2).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-3">
+          <p class="q zh">(3) 无论多忙，你<span class="blank">&nbsp;</span>要按时吃饭，别饿坏了身体。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">千万</span><span class="ans-vi">Ngữ điệu tha thiết, mong người khác chăm sóc bản thân → "千万" (điểm 2).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-4">
+          <p class="q zh">(4) 我跟你保证，这件事我<span class="blank">&nbsp;</span>会做到，你放心吧。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">一定</span><span class="ans-vi">Ngôi thứ nhất, biểu thị quyết tâm, đi cùng "会" → chỉ "一定" dùng được (điểm 3).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-5">
+          <p class="q zh">(5) 便宜的东西<span class="blank">&nbsp;</span>都不好，有时候也有物美价廉的。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">不一定</span><span class="ans-vi">Thể phủ định của "一定", nghĩa "không hẳn/không nhất thiết" → "千万" không có cách dùng này (điểm 4).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-6">
+          <p class="q zh">(6) 只要肯努力，成功<span class="blank">&nbsp;</span>是可以实现的。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">一定</span><span class="ans-vi">"一定" mang nghĩa chắc chắn, tất nhiên → "千万" không có cách dùng này (điểm 4).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-7">
+          <p class="q zh">(7) 想学好一门外语，<span class="blank">&nbsp;</span>的语言环境和坚持练习是必不可少的。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">一定</span><span class="ans-vi">"一定" ở đây làm tính từ, nghĩa "một mức độ nào đó" → chỉ "一定" dùng được (điểm 5).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-8">
+          <p class="q zh">(8) A：明天的会议你会准时到吧？ B：<span class="blank">&nbsp;</span>（到）。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">一定</span><span class="ans-vi">Đáp lại ngắn gọn, độc lập → chỉ "一定" dùng được, "千万" không có cách dùng này (điểm 6).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-9">
+          <p class="q zh">(9) 这药有一定的副作用，吃的时候<span class="blank">&nbsp;</span>要按照医生说的剂量，别自己乱吃。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">千万</span><span class="ans-vi">Chú ý: câu này có cả 2 từ — "一定的" (tính từ, điểm 5) và chỗ trống cần điền "千万" vì đi kèm ý phủ định/cảnh báo (điểm 1 & 2).</span></div>
+        </div>
+        <div class="exercise" data-id="e3c-10">
+          <p class="q zh">(10) 那个地方晚上治安不好，你<span class="blank">&nbsp;</span>别一个人出门。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">千万</span><span class="ans-vi">Ngữ điệu tha thiết cảnh báo an toàn, đi cùng "别" → "千万" (điểm 1 & 2).</span></div>
+        </div>
+      </section>
+
+      <!-- ================= PANEL 4: 补语大比拼 (mở rộng) ================= -->
+      <section class="panel" id="p4">
+        <div class="term-head">
+          <span class="glyph" style="font-size:38px;">起来 · 下去 · 出来 · 过来 · 上来</span>
+        </div>
+        <p class="lede">Ngoài "起来", nhiều bổ ngữ xu hướng khác cũng mang <b>nghĩa mở rộng (引申义)</b> khi kết hợp với động từ tri giác/tư duy — không còn chỉ hướng vật lý nữa. Đây là bảng tổng hợp để đối chiếu.</p>
+
+        <div class="table-wrap">
+        <table>
+          <caption>Nghĩa mở rộng thường gặp</caption>
+          <thead><tr><th>补语</th><th>Nghĩa mở rộng</th><th>Động từ hay đi kèm</th><th>Ví dụ</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>起来</b></td>
+              <td>① nhớ lại　② bắt đầu hành động　③ nhận xét, đánh giá</td>
+              <td>想、看、听、说、笑、哭</td>
+              <td>我想起来他的名字了。/ 大家笑起来了。</td>
+            </tr>
+            <tr>
+              <td><b>下去</b></td>
+              <td>tiếp tục một hành động đang diễn ra, không dừng lại</td>
+              <td>坚持、活、做、看</td>
+              <td>你别灰心，坚持下去就会成功。</td>
+            </tr>
+            <tr>
+              <td><b>出来</b></td>
+              <td>nhận ra, phát hiện ra, tạo ra kết quả</td>
+              <td>认、想、写、做、看</td>
+              <td>我认出来了，他是我的老同学。/ 他写出来了一篇好文章。</td>
+            </tr>
+            <tr>
+              <td><b>过来</b></td>
+              <td>hồi phục, tỉnh lại; hoặc chuyển hướng về phía người nói</td>
+              <td>醒、恢复、反应</td>
+              <td>他昏倒了，过了一会儿才醒过来。</td>
+            </tr>
+            <tr>
+              <td><b>回来</b></td>
+              <td>trở lại trạng thái/vị trí ban đầu (ít dùng nghĩa trừu tượng)</td>
+              <td>要、拿、找</td>
+              <td>他把钱又要回来了。</td>
+            </tr>
+            <tr>
+              <td><b>上来</b></td>
+              <td>thực hiện <b>thành công</b> một hành động (hay dùng phủ định để chỉ khả năng không làm được)</td>
+              <td>答、说、想、爬</td>
+              <td>这道题太难了，我一时答不上来。</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="note-box">
+          <b>Quy tắc chung:</b> "V + 起来" mang 2 lớp nghĩa chính — (1) nghĩa chỉ hướng vật lý: từ dưới lên trên (站起来, 坐起来, 拿起来); (2) nghĩa mở rộng tùy động từ đứng trước: sau động từ tri giác/tư duy (想/说/看/听/算) → đánh giá, nhận xét, hồi tưởng; sau động từ chỉ hành động (哭/笑) → bắt đầu một hành động.
+        </div>
+
+        <h2 class="section-title">四组辨析：起来 · 下去 · 出来 · 上来</h2>
+        <div class="table-wrap">
+        <table>
+          <caption>So sánh chi tiết ở nghĩa khả năng / mở rộng</caption>
+          <thead><tr><th>Tiêu chí</th><th>起来</th><th>下去</th><th>出来</th><th>上来</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Trọng tâm ngữ nghĩa</td>
+              <td>Khởi đầu / hồi tưởng</td>
+              <td>Tiếp diễn, duy trì</td>
+              <td>Phát hiện / tạo ra kết quả</td>
+              <td>Khả năng hoàn thành, đạt tới</td>
+            </tr>
+            <tr>
+              <td>Động từ hay đi kèm</td>
+              <td>想、看、听、说、笑、哭</td>
+              <td>坚持、活、说、听</td>
+              <td>想、认、看、写</td>
+              <td>答、说、想、跟</td>
+            </tr>
+            <tr>
+              <td>Phủ định phổ biến</td>
+              <td>想不起来 <span class="vi">không nhớ ra</span></td>
+              <td>坚持不下去 <span class="vi">không thể tiếp tục</span></td>
+              <td>想不出来 <span class="vi">không nghĩ ra được</span></td>
+              <td>答不上来 <span class="vi">không trả lời được</span></td>
+            </tr>
+            <tr>
+              <td>Ví dụ</td>
+              <td>我怎么也想不起来他的名字。</td>
+              <td>工作太累，他做不下去了。</td>
+              <td>这个问题他想不出来答案。</td>
+              <td>老师问的问题，他答不上来。</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h2 class="section-title">综合练习 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">Điền bổ ngữ xu hướng phù hợp</span></h2>
+        <p class="lede" style="margin-top:0;">词库 Từ để chọn：起来　下去　出来　上来　过来　（可重复使用）</p>
+
+        <div class="exercise" data-id="e4-1">
+          <p class="q zh">(1) 我们十年没见了，他变化太大，我一开始怎么也认不<span class="blank">&nbsp;</span>，后来听他说话的声音，才慢慢想<span class="blank">&nbsp;</span>他是谁。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">认不出来 … 想起来</span><span class="ans-vi">认不出来 = không nhận ra; 想起来 = nhớ lại</span></div>
+        </div>
+        <div class="exercise" data-id="e4-2">
+          <p class="q zh">(2) 老师提的问题不难，可是小明一紧张，脑子里一片空白，什么都答不<span class="blank">&nbsp;</span>。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">答不上来</span><span class="ans-vi">Không trả lời được (do quá khó/căng thẳng)</span></div>
+        </div>
+        <div class="exercise" data-id="e4-3">
+          <p class="q zh">(3) 这份工作又累又没有前途，可是为了养家，他还是决定坚持做<span class="blank">&nbsp;</span>。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">做下去</span><span class="ans-vi">Tiếp tục duy trì công việc</span></div>
+        </div>
+        <div class="exercise" data-id="e4-4">
+          <p class="q zh">(4) 她听到爸爸生病的消息，一下子晕<span class="blank">&nbsp;</span>了，医生和护士一直在旁边照顾，过了十几分钟才慢慢醒<span class="blank">&nbsp;</span>。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">晕过去 … 醒过来</span><span class="ans-vi">晕过去 = ngất đi; 醒过来 = tỉnh lại (chú ý hướng ngược nhau của 过去/过来)</span></div>
+        </div>
+        <div class="exercise" data-id="e4-5">
+          <p class="q zh">(5) 这道题老师已经讲了三次，可我还是想不<span class="blank">&nbsp;</span>解题的方法，只好去问同学。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">想不出来</span><span class="ans-vi">Không nghĩ ra được cách giải</span></div>
+        </div>
+        <div class="exercise" data-id="e4-6">
+          <p class="q zh">(6) 山路又陡又滑，很多人爬到一半就走不动了，最后只有几个年轻人爬<span class="blank">&nbsp;</span>了山顶。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">爬上来 / 爬上去</span><span class="ans-vi">Leo lên đến đỉnh (khả năng hoàn thành)</span></div>
+        </div>
+        <div class="exercise" data-id="e4-7">
+          <p class="q zh">(7) 经过半年的努力，研发团队终于把新产品设计<span class="blank">&nbsp;</span>了，大家都很开心。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">设计出来</span><span class="ans-vi">Tạo ra được sản phẩm (kết quả)</span></div>
+        </div>
+        <div class="exercise" data-id="e4-8">
+          <p class="q zh">(8) 别灰心，虽然现在很困难，只要坚持<span class="blank">&nbsp;</span>，一定会有好结果的。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">坚持下去</span><span class="ans-vi">Tiếp tục kiên trì</span></div>
+        </div>
+        <div class="exercise" data-id="e4-9">
+          <p class="q zh">(9) 他说话很快，我一时反应不<span class="blank">&nbsp;</span>，等他说完好一会儿，我才明白他的意思。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">反应不过来</span><span class="ans-vi">Không kịp phản ứng/hiểu ra</span></div>
+        </div>
+        <div class="exercise" data-id="e4-10">
+          <p class="q zh">(10) 小时候的很多事情，我原来都忘了，可是回到老家，看到那些熟悉的地方，一下子全都想<span class="blank">&nbsp;</span>了。</p>
+          <button class="reveal-btn">Xem đáp án</button>
+          <div class="answer"><span class="ans-zh">想起来</span><span class="ans-vi">Nhớ lại được</span></div>
+        </div>
+      </section>
+
+      <!-- ================= PANEL 5: 总结与测验 ================= -->
+      <section class="panel" id="p5">
+        <div class="term-head">
+          <span class="glyph" style="font-size:38px;">总结 · 测验</span>
+        </div>
+        <p class="lede">Nhìn lại toàn bộ 3 điểm ngữ pháp đã học trong 1 bảng tổng quan, sau đó làm bài trắc nghiệm tổng hợp để tự kiểm tra mức độ nắm bài.</p>
+
+        <h2 class="section-title">一览表 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">Bảng tổng quan 3 điểm ngữ pháp</span></h2>
+
+        <div class="overview-grid">
+          <div class="overview-card">
+            <h4>起来 <small>bổ ngữ xu hướng / khả năng</small></h4>
+            <ul>
+              <li>Nghĩa gốc: động tác <b>từ dưới lên trên</b> (站起来, 坐起来).</li>
+              <li>Sau "想" → nghĩa mở rộng: <b>nhớ lại</b> điều đã quên.</li>
+              <li>Phủ định "想不起来" = cố nhớ mà không được.</li>
+            </ul>
+            <span class="fixed-pattern">想 + 起来 = nhớ lại</span>
+          </div>
+          <div class="overview-card">
+            <h4>弄 <small>động từ vạn năng khẩu ngữ</small></h4>
+            <ul>
+              <li>Thay thế linh hoạt cho động từ cụ thể (弄=准备/碰/批评…).</li>
+              <li>Họ hàng: 搞 (gây ra, tổ chức), 干 (tránh dùng với người), 做 (chuẩn, trang trọng).</li>
+              <li>弄好 = chuẩn bị xong; 弄坏 = làm hỏng.</li>
+            </ul>
+            <span class="fixed-pattern">弄 + kết quả = làm cho... ra sao</span>
+          </div>
+          <div class="overview-card">
+            <h4>千万 <small>phó từ, khẩn thiết</small></h4>
+            <ul>
+              <li>= "nhất định phải", thường đi với <b>别 / 不要</b> (câu phủ định).</li>
+              <li>Ngữ điệu tha thiết, dặn dò — khác "一定" mang tính ra lệnh.</li>
+              <li>Không dùng ở ngôi thứ nhất, không làm tính từ (khác 一定).</li>
+            </ul>
+            <span class="fixed-pattern">千万 + 别 + động từ</span>
+          </div>
+        </div>
+
+        <table class="mini-table">
+          <thead><tr><th>Bổ ngữ mở rộng</th><th>起来</th><th>下去</th><th>出来</th><th>过来</th><th>上来</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Nghĩa mở rộng</td>
+              <td>nhớ lại / bắt đầu</td>
+              <td>tiếp tục</td>
+              <td>nhận ra / tạo ra</td>
+              <td>hồi phục, tỉnh lại</td>
+              <td>đạt tới, hoàn thành</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="section-title">测验 <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400;">Trắc nghiệm tổng hợp — 12 câu</span></h2>
+
+        <div id="quiz-progress-wrap">
+          <span id="quiz-progress-label">已答 0 / 12</span>
+          <div class="track"><div class="fill" id="quiz-progress-fill"></div></div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="quiz-summary" id="quiz-summary" style="display:none;">
+          <p class="score-num" id="quiz-score-num">0 / 12</p>
+          <p class="grade" id="quiz-grade"></p>
+          <p class="msg" id="quiz-msg"></p>
+          <button class="retry-btn" id="quiz-retry">重新测验 Làm lại</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>Bài 15 · Ngữ pháp HSK 4–5 · 想起来 / 弄 / 千万 — Tài liệu tương tác song ngữ Việt–Trung</footer>
+</div>
+
+<script>
+  // ---- Tab navigation ----
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.panel).classList.add('active');
+      window.scrollTo({top: 0, behavior:'smooth'});
+    });
+  });
+
+  // ---- Reveal answers + seal stamp + progress ----
+  const exercises = document.querySelectorAll('.exercise');
+  const total = exercises.length;
+  document.getElementById('progress-total').textContent = total;
+  let done = 0;
+
+  function updateProgress(){
+    document.getElementById('progress-label').innerHTML = '已完成 ' + done + ' / <span id="progress-total">' + total + '</span>';
+    document.getElementById('progress-fill').style.width = (done/total*100) + '%';
+  }
+
+  exercises.forEach(ex => {
+    const btn = ex.querySelector('.reveal-btn');
+    const ans = ex.querySelector('.answer');
+    btn.addEventListener('click', () => {
+      if (ans.classList.contains('show')) return;
+      ans.classList.add('show');
+      btn.classList.add('done');
+      btn.textContent = '✓ 已查看 Đã xem';
+      done++;
+      updateProgress();
+
+      // seal stamp pop
+      const stamp = document.createElement('div');
+      stamp.className = 'stamp';
+      stamp.textContent = '对';
+      ex.appendChild(stamp);
+      requestAnimationFrame(() => stamp.classList.add('pop'));
+    });
+  });
+  updateProgress();
+
+  // ---- Quiz: tổng hợp trắc nghiệm ----
+  const quizData = [
+    { q: "我们十年没见了，一开始怎么也认不出他，后来听声音才慢慢____他是谁。",
+      opts: ["想起来","想下去","想出来","想上来"], correct: 0,
+      explain: "\"想起来\" mang nghĩa nhớ lại — đúng ngữ cảnh nhận ra người quen sau khi quên." },
+    { q: "别把新买的沙发____坏了！",
+      opts: ["弄","干","一定","千万"], correct: 0,
+      explain: "\"弄坏\" = làm hỏng — đây là cách dùng \"弄\" thay cho động từ cụ thể (碰/摔…)." },
+    { q: "这是给她的惊喜，你现在____别告诉她。",
+      opts: ["一定","千万","不一定","干"], correct: 1,
+      explain: "\"千万别\" đi với câu phủ định, mang ngữ điệu tha thiết, dặn dò — đúng ngữ cảnh giữ bí mật." },
+    { q: "感谢大家的支持，我____会更加努力。",
+      opts: ["千万","不一定","一定","千万别"], correct: 2,
+      explain: "\"一定\" dùng ở ngôi thứ nhất để biểu thị quyết tâm — \"千万\" không có cách dùng này." },
+    { q: "这道题老师讲了很多遍，可是我还是想不____解题方法。",
+      opts: ["起来","下去","出来","上来"], correct: 2,
+      explain: "\"想不出来\" = không nghĩ ra được (cách giải) — đúng nghĩa \"phát hiện/tạo ra kết quả\" của 出来." },
+    { q: "老师提的问题不难，可是他一紧张，什么都答不____。",
+      opts: ["起来","下去","出来","上来"], correct: 3,
+      explain: "\"答不上来\" = không trả lời được — 上来 biểu thị khả năng hoàn thành (ở đây là phủ định)." },
+    { q: "这件事从头到尾都是他自己____的决定，跟别人没关系。",
+      opts: ["弄","做","搞","干"], correct: 1,
+      explain: "\"做决定\" là cụm cố định, trang trọng — 做 là lựa chọn chuẩn nhất ở đây." },
+    { q: "你每天下班以后一般都____什么？——大部分时间在家看书。",
+      opts: ["弄","做","干","搞"], correct: 2,
+      explain: "\"干什么\" là cách nói khẩu ngữ quen thuộc khi hỏi ai đó đang/thường làm gì." },
+    { q: "找工作的人____要到这里看一看，这里的工作机会最多。",
+      opts: ["千万","一定","不一定","千万别"], correct: 1,
+      explain: "Câu khẳng định, ngữ điệu mạnh mẽ khuyên nhủ → dùng \"一定\", không phải \"千万\" (千万 thiên về câu phủ định)." },
+    { q: "他昏倒了，过了一会儿才慢慢醒____。",
+      opts: ["起来","下去","过来","上来"], correct: 2,
+      explain: "\"醒过来\" = tỉnh lại, hồi phục về trạng thái bình thường — đúng nghĩa mở rộng của 过来." },
+    { q: "如果你有____的语言基础，出国学习外语是很好的选择。",
+      opts: ["千万","一定","不一定","十分"], correct: 1,
+      explain: "\"一定\" ở đây làm tính từ, nghĩa \"một mức độ nào đó\" — \"千万\" không có cách dùng này." },
+    { q: "A：这次你升职了，得请客啊！B：____（请客）。",
+      opts: ["一定","千万","弄","做"], correct: 0,
+      explain: "\"一定\" có thể dùng độc lập, ngắn gọn để đáp lại — \"千万\" không có cách dùng này." }
+  ];
+
+  const quizContainer = document.getElementById('quiz-container');
+  let quizAnswered = 0;
+  let quizScore = 0;
+
+  function renderQuiz(){
+    quizContainer.innerHTML = '';
+    quizAnswered = 0; quizScore = 0;
+    document.getElementById('quiz-summary').style.display = 'none';
+    updateQuizProgress();
+
+    quizData.forEach((item, qi) => {
+      const box = document.createElement('div');
+      box.className = 'quiz-item';
+      box.innerHTML =
+        '<div class="q-num">第 ' + (qi+1) + ' 题 / Câu ' + (qi+1) + '</div>' +
+        '<p class="q-text zh">' + item.q + '</p>' +
+        '<div class="options"></div>' +
+        '<div class="quiz-explain"></div>';
+      const optsWrap = box.querySelector('.options');
+      item.opts.forEach((optText, oi) => {
+        const b = document.createElement('button');
+        b.className = 'opt-btn zh';
+        b.textContent = optText;
+        b.addEventListener('click', () => {
+          if (box.dataset.answered) return;
+          box.dataset.answered = '1';
+          const allOpts = optsWrap.querySelectorAll('.opt-btn');
+          allOpts.forEach((el, idx) => {
+            el.classList.add('disabled');
+            if (idx === item.correct) el.classList.add('correct');
+          });
+          if (oi !== item.correct) b.classList.add('wrong');
+          else quizScore++;
+          const ex = box.querySelector('.quiz-explain');
+          ex.textContent = item.explain;
+          ex.classList.add('show');
+          quizAnswered++;
+          updateQuizProgress();
+          if (quizAnswered === quizData.length) showQuizSummary();
+        });
+        optsWrap.appendChild(b);
+      });
+      quizContainer.appendChild(box);
+    });
+  }
+
+  function updateQuizProgress(){
+    document.getElementById('quiz-progress-label').textContent = '已答 ' + quizAnswered + ' / ' + quizData.length;
+    document.getElementById('quiz-progress-fill').style.width = (quizAnswered/quizData.length*100) + '%';
+  }
+
+  function showQuizSummary(){
+    const pct = quizScore / quizData.length;
+    let grade, msg;
+    if (pct >= 0.9){ grade = '状元 🌟'; msg = 'Xuất sắc! Bạn đã nắm rất vững cả 3 điểm ngữ pháp.'; }
+    else if (pct >= 0.7){ grade = '举人'; msg = 'Khá tốt! Xem lại phần giải thích của các câu sai để hoàn thiện hơn.'; }
+    else if (pct >= 0.5){ grade = '秀才'; msg = 'Đã nắm được phần cơ bản — nên ôn lại các tab 起来 / 弄 / 千万 và làm lại.'; }
+    else { grade = '再接再厉'; msg = 'Nên xem lại kỹ từng tab luyện tập trước khi làm lại bài trắc nghiệm.'; }
+    document.getElementById('quiz-score-num').textContent = quizScore + ' / ' + quizData.length;
+    document.getElementById('quiz-grade').textContent = grade;
+    document.getElementById('quiz-msg').textContent = msg;
+    document.getElementById('quiz-summary').style.display = 'block';
+    document.getElementById('quiz-summary').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  document.getElementById('quiz-retry').addEventListener('click', renderQuiz);
+  renderQuiz();
+</script>
+</body>
+</html>
